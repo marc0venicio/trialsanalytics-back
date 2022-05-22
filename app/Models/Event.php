@@ -11,6 +11,7 @@ class Event extends Model
 
     protected $fillable = [
         'id',
+        'tenant_id',
         'name',
         'event_date'
     ];

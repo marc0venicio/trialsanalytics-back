@@ -7,6 +7,9 @@ use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\Product;
 use Validator;
 use App\Http\Resources\Product as ProductResource;
+use App\Models\Event;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Passport\AuthCode;
 
 class ProductController extends BaseController
 {
@@ -17,9 +20,8 @@ class ProductController extends BaseController
      */
     public function index()
     {
-        $products = Product::all();
-
-        return $this->sendResponse(ProductResource::collection($products), 'Products retrieved successfully.');
+        $products = Event::all();
+        return $products;
     }
     /**
      * Store a newly created resource in storage.
@@ -29,20 +31,13 @@ class ProductController extends BaseController
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $product = new Event();
+        $product->name = 'teste';
+        $product->event_date = now();
+        $product->save();
 
-        $validator = Validator::make($input, [
-            'name' => 'required',
-            'detail' => 'required'
-        ]);
-
-        if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());
-        }
-
-        $product = Product::create($input);
-
-        return $this->sendResponse(new ProductResource($product), 'Product created successfully.');
+        return $product;
+        //return $this->sendResponse(new ProductResource($product), 'Product created successfully.');
     }
 
     /**

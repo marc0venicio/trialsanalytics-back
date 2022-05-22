@@ -25,6 +25,9 @@ class SetTenantIdInSession
      */
     public function handle($event)
     {
-        session()->put('tenant_id', $event->user->tenant_id);
+        //dump(auth()->user()->tenant_id);
+        //auth()->user()->tenant_id = $event->user->tenant_id;
+        //dd(auth()->user()->tenant_id);
+        //dd(session()->get('tenant_id'));
     }
 }
