@@ -18,6 +18,10 @@ class Question extends Model
         "answer"
     ];
 
+    protected $casts = [
+        "alternatives" => 'array'
+    ];
+
     public function proofs()
     {
         $this->belongsToMany(Proof::class);

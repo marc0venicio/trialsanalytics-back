@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\ProofController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,14 @@ use App\Http\Controllers\API\ProductController;
 Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [RegisterController::class, 'login']);
 
+
+
+
+// Rotas de Proofs
 Route::middleware('auth:api')->group( function () {
-    Route::resource('products', ProductController::class);
+    Route::get('proofs', [ProofController::class, 'index']);
+    Route::post('proof', [ProofController::class, 'store']);
+    Route::get('proofs/{id}', [ProofController::class, 'show']);
+    Route::put('proofs/{id}', [ProofController::class, 'update']);
+    Route::delete('proofs/{id}', [ProofController::class, 'delete']);
 });

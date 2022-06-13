@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tenant_id')->constrained();
             $table->string("description");
-            $table->string("alternatives");
+            $table->json("alternatives");
             $table->enum("answer", ["a", "b", "c", "d", "e"]);
             $table->softDeletes();
             $table->timestamps();
