@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
+use App\Http\Requests\StoreProofRequest;
 use App\Models\Product;
 use Validator;
 use App\Http\Resources\Product as ProductResource;
@@ -29,8 +30,10 @@ class ProductController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProofRequest $request)
     {
+        $data = $request->all();
+        dd($data);
         $product = new Event();
         $product->name = 'teste';
         $product->event_date = now();
