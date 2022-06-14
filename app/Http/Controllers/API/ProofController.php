@@ -18,7 +18,8 @@ class ProofController extends BaseController
 
     public function store(StoreProofRequest $request)
     {
-         dd($request->all());
+
+        dd($request->all());
     }
 
     public function show(ModelsProof $id)

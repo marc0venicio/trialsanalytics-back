@@ -28,8 +28,16 @@ class StoreProofRequest extends BaseFormRequest
         return [
             "subject"  => "required|string",
             "discipline" => "required|string",
-            "description" => "required|string"
-            //"answer" => "required"
+            "description" => "required|string",
+            // "questions" => $this->questions()
+        ]+$this->questions();
+    }
+
+    private function questions(){
+        return [
+            'questions.alternatives' => 'required|string',
+            'questions.description' => 'required|string',
+            'questions.answer' => 'required|string',
         ];
     }
 }
