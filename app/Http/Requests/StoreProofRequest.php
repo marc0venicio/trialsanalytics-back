@@ -29,7 +29,7 @@ class StoreProofRequest extends BaseFormRequest
             "subject"  => "required|string",
             "discipline" => "required|string",
             "description" => "required|string",
-            // "questions" => $this->questions()
+            "questions" => $this->questions()
         ]+$this->questions();
     }
 
