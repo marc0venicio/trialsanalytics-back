@@ -21,8 +21,12 @@ use App\Http\Controllers\API\ProofController;
 Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [RegisterController::class, 'login']);
 
-Route::post('proof', [ProofController::class, 'store']);
+
 
 Route::middleware('auth:api')->group( function () {
+    Route::get('proof', [ProofController::class, 'index']);
+    Route::post('proof', [ProofController::class, 'store']);
+    Route::put('proof/{id}', [ProofController::class, 'store']);
+    Route::delete('proof/{id}', [ProofController::class, 'delete']);
     Route::resource('products', ProductController::class);
 });
