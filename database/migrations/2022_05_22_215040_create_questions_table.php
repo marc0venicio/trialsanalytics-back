@@ -24,9 +24,8 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('question_proof', function (Blueprint $table) {
+        Schema::create('proof_question', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tenant_id')->constrained();
             $table->foreignId('question_id')->constrained('questions');
             $table->foreignId('proof_id')->constrained('proofs');
             $table->softDeletes();

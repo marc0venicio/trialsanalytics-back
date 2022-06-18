@@ -12,13 +12,15 @@ class Proof extends Model
 
     protected $fillable = [
         "id",
+        "tenant_id",
         "subject",
         "discipline",
-        "question_id",
     ];
+
+    // protected $appends = ['questions'];
 
     public function questions()
     {
-        $this->belongsToMany(Question::class);
+        return $this->belongsToMany(Question::class);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Proof as ModelsProof;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Proof extends JsonResource
@@ -14,6 +15,15 @@ class Proof extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'tenant_id' => $this->description,
+            'subject' => $this->subject,
+            'questions' => new QuestionResource($this->whenLoaded('questions')),
+            'discipline' => $this->discipline,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+        ];
     }
+
 }

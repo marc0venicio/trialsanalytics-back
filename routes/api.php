@@ -24,7 +24,7 @@ Route::post('login', [RegisterController::class, 'login']);
 
 
 Route::middleware('auth:api')->group( function () {
-    Route::get('proof', [ProofController::class, 'index']);
+    Route::get('proofs', [ProofController::class, 'index']);
     Route::post('proof', [ProofController::class, 'store']);
     Route::put('proof/{id}', [ProofController::class, 'store']);
     Route::delete('proof/{id}', [ProofController::class, 'delete']);

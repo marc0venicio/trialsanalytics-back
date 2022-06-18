@@ -24,6 +24,6 @@ class Question extends Model
 
     public function proofs()
     {
-        $this->belongsToMany(Proof::class);
+        return $this->belongsToMany(Proof::class);
     }
 }
